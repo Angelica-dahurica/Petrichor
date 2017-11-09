@@ -4,7 +4,13 @@ namespace App\Providers;
 
 class Tag extends \Faker\Provider\Base
 {
-    protected static $tagList = array('小清新', '欧美风', '美女');
+    protected static $tagList = array(
+        '风光', '人像', '城市', '旅行', '纪实',
+        '街拍', '人文', '美女', '建筑', '自然',
+        '秋天', '静物', '光影', '夜景', '少女',
+        '儿童', '植物', '生活', '花卉', '动物',
+        '校园', '私房', '猫', '夕阳', '美食'
+    );
 
     /**
      * @example 'Tag'

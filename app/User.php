@@ -33,22 +33,4 @@ class User extends Model
 
     protected $primaryKey = 'userid';
 
-
-    /**
-     * 创建一个新的实例。
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        // 验证请求...
-
-        $flight = new User;
-
-        $flight->name = $request->name;
-
-        $flight->save();
-    }
-
 }
