@@ -22,7 +22,6 @@ class CreateActivityTable extends Migration
             $table->string('activity_location');
             $table->dateTime('activity_time');
             $table->integer('activity_limitnum');
-            $table->text('activity_userlist');
             $table->foreign('activity_creator')->references('userid')->on('user');
         });
     }

@@ -14,10 +14,12 @@ class CreateRepostDynamicTable extends Migration
     public function up()
     {
         Schema::create('repost_dynamic', function (Blueprint $table) {
-            $table->integer('userid');
-            $table->integer('dynamicid');
+            $table->integer('userid')->unsigned();
+            $table->integer('dynamicid')->unsigned();
             $table->primary(['userid', 'dynamicid']);
             $table->dateTime('repost_time');
+            $table->foreign('userid')->references('userid')->on('user');
+            $table->foreign('dynamicid')->references('dynamicid')->on('dynamic');
         });
     }
 

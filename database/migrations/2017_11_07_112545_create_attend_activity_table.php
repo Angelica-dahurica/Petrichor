@@ -14,10 +14,12 @@ class CreateAttendActivityTable extends Migration
     public function up()
     {
         Schema::create('attend_activity', function (Blueprint $table) {
-            $table->integer('userid');
-            $table->integer('activityid');
+            $table->integer('userid')->unsigned();
+            $table->integer('activityid')->unsigned();
             $table->primary(['userid', 'activityid']);
             $table->dateTime('attend_time');
+            $table->foreign('userid')->references('userid')->on('user');
+            $table->foreign('activityid')->references('activityid')->on('activity');
         });
     }
 

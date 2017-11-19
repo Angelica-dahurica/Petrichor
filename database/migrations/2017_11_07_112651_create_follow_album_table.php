@@ -14,10 +14,12 @@ class CreateFollowAlbumTable extends Migration
     public function up()
     {
         Schema::create('follow_album', function (Blueprint $table) {
-            $table->integer('userid');
-            $table->integer('albumid');
+            $table->integer('userid')->unsigned();
+            $table->integer('albumid')->unsigned();
             $table->primary(['userid', 'albumid']);
             $table->dateTime('follow_time');
+            $table->foreign('userid')->references('userid')->on('user');
+            $table->foreign('albumid')->references('albumid')->on('album');
         });
     }
 

@@ -15,9 +15,10 @@ class CreateCommentDynamicTable extends Migration
     {
         Schema::create('comment_dynamic', function (Blueprint $table) {
             $table->increments('dynamicid');
-            $table->integer('comment_userid');
+            $table->integer('comment_userid')->unsigned();
             $table->text('comment_content');
             $table->dateTime('comment_time');
+            $table->foreign('comment_userid')->references('userid')->on('user');
         });
     }
 

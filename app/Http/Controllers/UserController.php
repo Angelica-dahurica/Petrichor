@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -26,13 +28,57 @@ class UserController extends Controller
     }
 
     /**
-     * 显示指定用户的 profile。
+     * 根据id查询用户
      *
-     * @param  int  $id
-     * @return
+     * @return Response
      */
-    public function show($id)
+    public function insert()
     {
-        //
+        $users = DB::insert('insert into user values (?, ?, ?, ?, ?, ?, ?, ?)', [1]);
+        return view('user.index', ['users' => $users]);
+    }
+
+    /**
+     * 根据id查询用户
+     *
+     * @return Response
+     */
+    public function delete()
+    {
+        $users = DB::delete('delete from users where userid = ?', [1]);
+        return view('user.index', ['users' => $users]);
+    }
+
+    /**
+     * 根据id查询用户
+     *
+     * @return Response
+     */
+    public function update()
+    {
+        $users = DB::update('update users set votes = 100 where name = ?', [1]);
+        return view('user.index', ['users' => $users]);
+    }
+
+    /**
+     * 根据id查询用户
+     *
+     * @return Response
+     */
+    public function query($id)
+    {
+        $users = DB::select('select * from users where userid = ?', $id);
+        return view('user.index', ['users' => $users]);
+    }
+
+    /**
+     * 根据id查询用户
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $users = DB::select('select * from users where userid = ?', [1]);
+        return view('user.index', ['users' => $users]);
     }
 }

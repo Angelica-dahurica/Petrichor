@@ -17,7 +17,6 @@ class CreateGroupTable extends Migration
             $table->increments('groupid');
             $table->integer('group_creator')->unsigned();
             $table->string('group_name');
-            $table->text('group_userlist');
             $table->dateTime('group_createtime');
             $table->string('group_tags');
             $table->text('group_description');

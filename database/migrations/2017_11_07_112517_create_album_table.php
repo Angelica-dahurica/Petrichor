@@ -18,7 +18,6 @@ class CreateAlbumTable extends Migration
             $table->integer('album_creator')->unsigned();
             $table->string('album_name');
             $table->text('album_description');
-            $table->text('album_picturelist');
             $table->dateTime('album_createtime');
             $table->string('album_tags');
             $table->foreign('album_creator')->references('userid')->on('user');

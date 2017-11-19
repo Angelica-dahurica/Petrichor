@@ -14,10 +14,12 @@ class CreateAttendGroupTable extends Migration
     public function up()
     {
         Schema::create('attend_group', function (Blueprint $table) {
-            $table->integer('userid');
-            $table->integer('groupid');
+            $table->integer('userid')->unsigned();
+            $table->integer('groupid')->unsigned();
             $table->primary(['userid', 'groupid']);
             $table->dateTime('attend_time');
+            $table->foreign('userid')->references('userid')->on('user');
+            $table->foreign('groupid')->references('groupid')->on('group');
         });
     }
 

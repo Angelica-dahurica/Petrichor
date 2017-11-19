@@ -14,10 +14,12 @@ class CreateLikeDynamicTable extends Migration
     public function up()
     {
         Schema::create('like_dynamic', function (Blueprint $table) {
-            $table->integer('userid');
-            $table->integer('dynamicid');
+            $table->integer('userid')->unsigned();
+            $table->integer('dynamicid')->unsigned();
             $table->primary(['userid', 'dynamicid']);
             $table->dateTime('like_time');
+            $table->foreign('userid')->references('userid')->on('user');
+            $table->foreign('dynamicid')->references('dynamicid')->on('dynamic');
         });
     }
 

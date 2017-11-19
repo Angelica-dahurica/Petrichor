@@ -32,8 +32,7 @@ class Activity extends Model
         'activity_description',
         'activity_location',
         'activity_time',
-        'activity_limitnum',
-        'activity_userlist'
+        'activity_limitnum'
     ];
 
     protected $primaryKey = 'activityid';
