@@ -13,9 +13,5 @@
 */
 
 Route::get('/', function () {
-    return View('welcome');
-});
-
-Route::get('/user', function () {
-    return 'hello world';
+    return view('homepage');
 });

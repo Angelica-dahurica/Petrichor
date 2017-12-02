@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Activity extends Model
 {
@@ -38,4 +39,18 @@ class Activity extends Model
     protected $primaryKey = 'activityid';
 
     protected $dates = ['activity_time'];
+
+    public static function find($id)
+    {
+        $activity = DB::select('select * from activity where activityid = ?', [$id]);
+        return $activity;
+    }
+
+    /**
+     * 获得参加此活动的用户。
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'activity_creator', 'userid');
+    }
 }

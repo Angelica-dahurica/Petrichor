@@ -1,0 +1,28 @@
+@import './base'
+// 使得文字不能被选中
+no-select()
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;  /* Non-prefixed version, currently not supported by any browser */
+
+// 卡片样式
+card-style()
+  margin: 8px 0
+  background: #fff
+  box-shadow: 0 0px 5px #ccc
+
+general-title()
+  background-color: $theme-color
+  color: white
+  font-family: $theme-fonts
+  padding: 8px 8px 8px 16px
+  .general-title-text
+    font-size: 14px
+    display: inline-block
+
+general-content()
+  margin: 16px 16px
+
