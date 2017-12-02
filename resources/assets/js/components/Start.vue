@@ -6,15 +6,21 @@
                 <router-link to="/find"><el-menu-item index="2">发现</el-menu-item></router-link>
                 <router-link to="/choice"><el-menu-item index="3">精选</el-menu-item></router-link>
             </el-menu>
+            <div class="sign">
+                <router-link to="/signin" class="home-sign-in">登录</router-link>
+                <router-link to="/signup" class="home-sign-up">注册</router-link>
+            </div>
             <div class="title">petrichor</div>
             <div class="description">the earthy scent produced when rain falls on dry soil</div>
             <div class="description">a website for social</div>
-            <el-input
-                    :placeholder="搜索"
-                    icon="search"
-                    v-model="input"
-                    :on-icon-click="handleIconClick">
-            </el-input>
+            <router-link to="/homepage/find">
+                <el-input
+                        :placeholder="搜索"
+                        icon="search"
+                        v-model="input"
+                        :on-icon-click="handleIconClick">
+                </el-input>
+            </router-link>
         </div>
     </div>
 </template>
@@ -24,8 +30,7 @@
         data () {
             return {
                 input: '',
-                pictures: [],
-                activeIndex: '1',
+                pictures: []
             }
         },
         methods: {
@@ -34,11 +39,7 @@
                 this.$http.get(url).then((response) => {
                     response = response.body;
                     this.pictures = response.subjects
-                });
-                this.$router.push('/find')
-            },
-            handleSelect(key, keyPath) {
-                console.log(key, keyPath);
+                })
             }
         }
     }
@@ -53,9 +54,17 @@
             text-align center
             font-family "Buxton Sketch"
             background url("/images/home.jpg")
-            .el-menu
-                background-color #F4F8DF
-                text-color #fff
+            .sign
+                width 98%
+                display flex
+                padding-top 20px
+                padding-right 20px
+                font-size 14px
+                text-align right
+                .home-sign-in
+                    width 97%
+                .home-sign-up
+                    width 3%
             .title
                 font-size 60px
                 padding-top 100px

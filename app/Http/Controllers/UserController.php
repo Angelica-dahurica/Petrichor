@@ -76,9 +76,27 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Requset $request)
     {
         $users = DB::select('select * from users where userid = ?', [1]);
         return view('user.index', ['users' => $users]);
+    }
+
+    public static function create(Request $request){
+        $id = DB::table('user')->insertGetId([
+            'nickname' => $request->name,
+            'sex' => $request->sex,
+            'interest' => $request->interest,
+            'password' => $request->pwd,
+            'age' => $request->age
+        ]);
+    }
+
+    public static function valid(array $data){
+        $user = DB::table('user')->select('nickname', 'password')
+            ->where('nickname', '==', $data['nickname'])
+            ->where('password', '==', $data[1]);
+        if($user==null) return false;
+        else return true;
     }
 }

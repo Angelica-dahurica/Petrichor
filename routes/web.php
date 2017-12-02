@@ -12,6 +12,36 @@
 |
 */
 
+use App\User;
+
 Route::get('/', function () {
+    return view('start');
+});
+
+Route::get('/signin', function () {
+    return view('signin');
+});
+
+Route::get('/signup', function () {
+    return view('signup');
+});
+
+Route::get('/homepage', function () {
     return view('homepage');
 });
+
+Route::get('/find', function () {
+    return view('find');
+});
+
+Route::get('/choice', function () {
+    return view('choice');
+});
+
+Route::post('/user/signup', 'Auth\RegisterController@create');
+
+Route::get('/pictures', 'PictureController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
