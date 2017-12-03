@@ -12,6 +12,7 @@
 |
 */
 
+use App\Picture;
 use App\User;
 
 Route::get('/', function () {
@@ -38,10 +39,20 @@ Route::get('/choice', function () {
     return view('choice');
 });
 
-Route::post('/user/signup', 'Auth\RegisterController@create');
-
-Route::get('/pictures', 'PictureController@index');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+use App\Http\Resources\User as UserResource;
+Route::get('/users', function () {
+    return UserResource::collection(User::all());
+});
+
+use App\Http\Resources\Picture as PictureResource;
+Route::get('/pictures', function () {
+    return PictureResource::collection(Picture::all());
+});
+
+Route::get('/pictures/description={content}', function ($content) {
+    return PictureResource::collection(\App\Http\Controllers\PictureController::getDescrip($content));
+});

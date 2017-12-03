@@ -5,8 +5,10 @@
             <router-link to="/find"><el-menu-item index="2">发现</el-menu-item></router-link>
             <router-link to="/choice"><el-menu-item index="3">精选</el-menu-item></router-link>
         </el-menu>
-        <div class="picture-list" v-model="pictures" v-for="picture in pictures">
-            <img class="picture" :src=picture.picture_content></img>
+        <div class="picture-list">
+            <div class="picture" v-model="pictures" v-for="picture in pictures">
+                <img height="280px" :src=picture.picture_content>
+            </div>
         </div>
     </div>
 </template>
@@ -23,7 +25,7 @@
         created () {
             this.$http.get('/pictures').then((response) => {
                 response = response.body;
-                this.pictures = response;
+                this.pictures = response.data;
             })
         },
         methods: {
@@ -42,8 +44,11 @@
             text-color #fff
         .picture-list
             background-color #fff
-            margin-top 30px
+            padding 30px 20px
             .picture
-                height 300px
-                width 300px
+                display inline-block
+                margin 10px 10px
+                height 280px
+                .img
+                    margin 0
 </style>
