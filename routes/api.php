@@ -36,3 +36,7 @@ use \App\Http\Controllers\UserController as UserController;
 Route::post('/user/signup', function (Request $user) {
     return new UserResource(UserController::create($user));
 });
+
+Route::post('/user/signin', function (Request $user) {
+    return new UserResource(UserController::verify($user));
+});

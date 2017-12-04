@@ -89789,14 +89789,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$refs[formName].validate(function (valid) {
                 if (valid) {
-                    _this2.$http.post(_this2.$store.state.server + 'api/user/signin', { name: _this2.signInForm.username, pwd: _this2.signInForm.pass }, { emulateJSON: true }).then(function (response) {
-                        console.log(response.status);
-                        if (response.status === 201) {
+                    _this2.$http.post('/user/signin', {
+                        nickname: _this2.signInForm.username,
+                        password: _this2.signInForm.pass
+                    }, {
+                        emulateJSON: true
+                    }).then(function (response) {
+                        if (response.status === 200) {
                             _this2.showMessage('登陆成功！');
-                            var token = response.data.token;
-                            window.localStorage.setItem('token', token);
-                            console.log(window.localStorage.getItem('token'));
-                            _this2.jumpTo('/homepage');
+                            //                                const token = response.data.token;
+                            //                                window.localStorage.setItem('token', token);
+                            //                                console.log(window.localStorage.getItem('token'));
+                            setTimeout(function () {
+                                _this2.$router.push('/homepage');
+                            }, 1000);
                         }
                     }).catch(function (response) {
                         if (response.status === 401) {

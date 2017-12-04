@@ -14,7 +14,7 @@ class UserController extends Controller
                 'nickname' => $request->nickname,
                 'sex' => $request->sex,
                 'interest' => $request->interest,
-                'password' => bcrypt($request->password),
+                'password' => encrypt($request->password),
                 'avatar' => $request->avatar,
                 'age' => $request->age,
                 'signature' => $request->signature
@@ -23,5 +23,17 @@ class UserController extends Controller
             ->where('userid', '=', $id)
             ->first();
         return $user;
+    }
+
+    public static function verify(Request $request)
+    {
+        $user = DB::table('user')
+            ->select('userid', 'nickname', 'sex', 'interest', 'password', 'avatar', 'age', 'signature')
+            ->where('nickname', '=', $request->nickname)
+            ->first();
+        if(decrypt($user->password)==$request->password)
+            return $user;
+        else
+            return null;
     }
 }

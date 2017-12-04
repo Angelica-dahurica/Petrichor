@@ -72,14 +72,22 @@
             submitForm (formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        this.$http.post(this.$store.state.server + 'api/user/signin', {name: this.signInForm.username, pwd: this.signInForm.pass}, {emulateJSON: true}).then(response => {
-                            console.log(response.status);
-                            if (response.status === 201) {
+                        this.$http.post('/user/signin',
+                            {
+                                nickname: this.signInForm.username,
+                                password: this.signInForm.pass
+                            },
+                            {
+                                emulateJSON: true
+                            }).then(response => {
+                            if (response.status === 200) {
                                 this.showMessage('登陆成功！');
-                                const token = response.data.token;
-                                window.localStorage.setItem('token', token);
-                                console.log(window.localStorage.getItem('token'));
-                                this.jumpTo('/homepage')
+//                                const token = response.data.token;
+//                                window.localStorage.setItem('token', token);
+//                                console.log(window.localStorage.getItem('token'));
+                                setTimeout(()=>{
+                                    this.$router.push('/homepage');
+                                },1000);
                             }
                         }).catch(response => {
                             if (response.status === 401) {
