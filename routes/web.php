@@ -42,19 +42,3 @@ Route::get('/choice', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-use App\Http\Resources\Picture as PictureResource;
-use \App\Http\Controllers\PictureController as PictureController;
-
-Route::get('/pictures', function () {
-    return PictureResource::collection(PictureController::getHot());
-});
-
-Route::get('/pictures/description={content}', function ($content) {
-    return PictureResource::collection(PictureController::getDescrip($content));
-});
-
-Route::get('/find/tag={tag}', function ($tag) {
-    return PictureResource::collection(PictureController::getTags($tag));
-});
-
