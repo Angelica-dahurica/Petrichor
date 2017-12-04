@@ -40,7 +40,6 @@
             handleSelect(key, keyPath) {
                 this.tag = true;
                 this.input = '';
-                console.log(key, keyPath);
             }
         }
     }
@@ -51,7 +50,6 @@
         margin 0
         .el-menu
             background-color #F4F8DF
-            text-color #fff
         .main-page
             margin 0
             text-align center

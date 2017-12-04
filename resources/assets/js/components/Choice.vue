@@ -1,6 +1,6 @@
 <template>
     <div class="choice">
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
             <router-link to="/homepage"><el-menu-item index="1">首页</el-menu-item></router-link>
             <router-link to="/find"><el-menu-item index="2">发现</el-menu-item></router-link>
             <router-link to="/choice"><el-menu-item index="3">精选</el-menu-item></router-link>
@@ -27,11 +27,6 @@
                 response = response.body;
                 this.pictures = response.data;
             })
-        },
-        methods: {
-            handleSelect(key, keyPath) {
-                console.log(key, keyPath);
-            }
         }
     }
 </script>
@@ -41,7 +36,6 @@
         background-color #F4F8DF
         .el-menu
             background-color #F4F8DF
-            text-color #fff
         .picture-list
             background-color #fff
             padding 30px 20px

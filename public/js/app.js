@@ -89490,7 +89490,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, "\n.home-page {\n  margin: 0;\n}\n.home-page .el-menu {\n  background-color: #f4f8df;\n  text-color: #fff;\n}\n.home-page .main-page {\n  margin: 0;\n  text-align: center;\n  font-family: \"Buxton Sketch\";\n  background: url(\"/images/home.jpg\");\n}\n.home-page .main-page .title {\n  font-size: 60px;\n  padding-top: 100px;\n}\n.home-page .main-page .description {\n  font-size: 20px;\n  margin-top: 20px;\n}\n.home-page .main-page .el-input {\n  width: 280px;\n  margin-top: 20px;\n}\n.home-page .picture-list {\n  background-image: none !important;\n  padding: 30px 20px;\n}\n.home-page .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n}\n.home-page .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
+exports.push([module.i, "\n.home-page {\n  margin: 0;\n}\n.home-page .el-menu {\n  background-color: #f4f8df;\n}\n.home-page .main-page {\n  margin: 0;\n  text-align: center;\n  font-family: \"Buxton Sketch\";\n  background: url(\"/images/home.jpg\");\n}\n.home-page .main-page .title {\n  font-size: 60px;\n  padding-top: 100px;\n}\n.home-page .main-page .description {\n  font-size: 20px;\n  margin-top: 20px;\n}\n.home-page .main-page .el-input {\n  width: 280px;\n  margin-top: 20px;\n}\n.home-page .picture-list {\n  background-image: none !important;\n  padding: 30px 20px;\n}\n.home-page .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n}\n.home-page .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
 
 // exports
 
@@ -89546,7 +89546,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleSelect: function handleSelect(key, keyPath) {
             this.tag = true;
             this.input = '';
-            console.log(key, keyPath);
         }
     }
 });
@@ -90749,7 +90748,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, "\n.find {\n  background-color: #f4f8df;\n}\n.el-menu {\n  background-color: #f4f8df;\n  text-color: #fff;\n}\n", ""]);
+exports.push([module.i, "\n.find {\n  background-color: #f4f8df;\n}\n.find .el-menu {\n  background-color: #f4f8df;\n}\n.find .tag-list {\n  background-color: #fff;\n  padding: 30px 20px;\n}\n.find .tag-list .tag {\n  border-radius: 5px;\n  overflow: hidden;\n  width: 360px;\n  height: 240px;\n  display: inline-block;\n  margin: 10px 10px;\n  position: relative;\n}\n.find .tag-list .tag .tag-content {\n  position: absolute;\n  height: 240px;\n  width: 360px;\n  text-align: center;\n  line-height: 240px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 0;\n}\n.find .tag-list .tag .tag-content:hover {\n  position: absolute;\n  height: 240px;\n  width: 360px;\n  text-align: center;\n  line-height: 240px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 20px;\n  color: #777;\n  background-color: rgba(211,211,211,0.5);\n}\n.find .picture-list {\n  background-color: #fff;\n  padding: 30px 20px;\n}\n.find .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n}\n.find .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
 
 // exports
 
@@ -90770,17 +90769,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            activeIndex: '2'
+            activeIndex: '2',
+            tags: ['人像', '城市', '旅行', '纪实', '街拍', '人文', '美女', '建筑', '自然', '秋天', '静物', '光影', '夜景', '少女', '儿童', '植物', '生活', '花卉', '动物', '校园', '私房', '风格', '夕阳', '美食'],
+            pictures: [],
+            flag: true
         };
     },
 
     methods: {
+        handleClick: function handleClick($tag) {
+            var _this = this;
+
+            this.$http.get('/find/tag=' + $tag).then(function (response) {
+                response = response.body;
+                _this.pictures = response.data;
+            });
+            this.flag = false;
+        },
         handleSelect: function handleSelect(key, keyPath) {
-            console.log(key, keyPath);
+            this.flag = true;
         }
     }
 });
@@ -90825,7 +90847,43 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "index": "3"
     }
-  }, [_vm._v("精选")])], 1)], 1)], 1)
+  }, [_vm._v("精选")])], 1)], 1), _vm._v(" "), (_vm.flag) ? _c('div', {
+    staticClass: "tag-list"
+  }, _vm._l((_vm.tags), function(tag) {
+    return _c('div', {
+      staticClass: "tag"
+    }, [_c('img', {
+      attrs: {
+        "height": "240px",
+        "src": '/images/' + tag + '.jpg'
+      }
+    }), _vm._v(" "), _c('div', {
+      staticClass: "tag-content",
+      on: {
+        "click": function($event) {
+          _vm.handleClick(tag)
+        }
+      }
+    }, [_vm._v(_vm._s(tag))])])
+  })) : _c('div', {
+    staticClass: "picture-list"
+  }, _vm._l((_vm.pictures), function(picture) {
+    return _c('div', {
+      staticClass: "picture",
+      model: {
+        value: (_vm.pictures),
+        callback: function($$v) {
+          _vm.pictures = $$v
+        },
+        expression: "pictures"
+      }
+    }, [_c('img', {
+      attrs: {
+        "height": "280px",
+        "src": picture.picture_content
+      }
+    })])
+  }))], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -90908,7 +90966,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, "\n.choice {\n  background-color: #f4f8df;\n}\n.choice .el-menu {\n  background-color: #f4f8df;\n  text-color: #fff;\n}\n.choice .picture-list {\n  background-color: #fff;\n  padding: 30px 20px;\n}\n.choice .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n}\n.choice .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
+exports.push([module.i, "\n.choice {\n  background-color: #f4f8df;\n}\n.choice .el-menu {\n  background-color: #f4f8df;\n}\n.choice .picture-list {\n  background-color: #fff;\n  padding: 30px 20px;\n}\n.choice .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n}\n.choice .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
 
 // exports
 
@@ -90950,12 +91008,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             response = response.body;
             _this.pictures = response.data;
         });
-    },
-
-    methods: {
-        handleSelect: function handleSelect(key, keyPath) {
-            console.log(key, keyPath);
-        }
     }
 });
 
@@ -90971,9 +91023,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "default-active": _vm.activeIndex,
       "mode": "horizontal"
-    },
-    on: {
-      "select": _vm.handleSelect
     }
   }, [_c('router-link', {
     attrs: {
