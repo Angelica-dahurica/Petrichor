@@ -28,8 +28,8 @@
                     return callback(new Error('请输入用户名'))
                 }
                 setTimeout(() => {
-                    if (value.length < 3 || value.length > 10) {
-                        callback(new Error('用户名长度必须在3和10之间！'))
+                    if (value.length < 1 || value.length > 10) {
+                        callback(new Error('用户名长度必须在1和10之间！'))
                     } else {
                         callback()
                     }
@@ -89,9 +89,7 @@
                             }
                         });
                         return true
-//            console.log(this.$store.state.server)
                     } else {
-//                        console.log('error submit!!');
                         return false
                     }
                 })

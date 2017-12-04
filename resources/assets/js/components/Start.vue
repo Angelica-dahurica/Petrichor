@@ -1,7 +1,7 @@
 <template>
     <div class="home-page">
         <div class="main-page">
-            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
                 <router-link to="/homepage"><el-menu-item index="1">首页</el-menu-item></router-link>
                 <router-link to="/find"><el-menu-item index="2">发现</el-menu-item></router-link>
                 <router-link to="/choice"><el-menu-item index="3">精选</el-menu-item></router-link>
@@ -14,11 +14,7 @@
             <div class="description">the earthy scent produced when rain falls on dry soil</div>
             <div class="description">a website for social</div>
             <router-link to="/homepage/find">
-                <el-input
-                        :placeholder="搜索"
-                        icon="search"
-                        v-model="input"
-                        :on-icon-click="handleIconClick">
+                <el-input icon="search" v-model="input" :on-icon-click="handleIconClick">
                 </el-input>
             </router-link>
         </div>
@@ -30,7 +26,8 @@
         data () {
             return {
                 input: '',
-                pictures: []
+                pictures: [],
+                activeIndex: '1',
             }
         },
         methods: {

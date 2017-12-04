@@ -89304,16 +89304,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             input: '',
-            pictures: []
+            pictures: [],
+            activeIndex: '1'
         };
     },
 
@@ -89344,9 +89341,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "default-active": _vm.activeIndex,
       "mode": "horizontal"
-    },
-    on: {
-      "select": _vm.handleSelect
     }
   }, [_c('router-link', {
     attrs: {
@@ -89396,7 +89390,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-input', {
     attrs: {
-      "placeholder": _vm.搜索,
       "icon": "search",
       "on-icon-click": _vm.handleIconClick
     },
@@ -89751,8 +89744,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return callback(new Error('请输入用户名'));
             }
             setTimeout(function () {
-                if (value.length < 3 || value.length > 10) {
-                    callback(new Error('用户名长度必须在3和10之间！'));
+                if (value.length < 1 || value.length > 10) {
+                    callback(new Error('用户名长度必须在1和10之间！'));
                 } else {
                     callback();
                 }
@@ -89813,9 +89806,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }
                     });
                     return true;
-                    //            console.log(this.$store.state.server)
                 } else {
-                    //                        console.log('error submit!!');
                     return false;
                 }
             });
@@ -90046,8 +90037,8 @@ var interestsOptions = ['人像', '城市', '旅行', '纪实', '街拍', '人�
                 return callback(new Error('请输入用户名'));
             }
             setTimeout(function () {
-                if (value.length < 3 || value.length > 10) {
-                    callback(new Error('用户名长度必须在3和10之间！'));
+                if (value.length < 1 || value.length > 10) {
+                    callback(new Error('用户名长度必须在1和10之间！'));
                 } else {
                     callback();
                 }
@@ -90080,13 +90071,14 @@ var interestsOptions = ['人像', '城市', '旅行', '纪实', '街拍', '人�
                 sex: '',
                 interest: [],
                 age: 0
+                //                    avatar: '',
+                //                    signature: ''
             },
             signUpRules: {
                 pass: [{ validator: validatePass, trigger: 'blur' }],
                 checkPass: [{ validator: validatePassRepeat, trigger: 'blur' }],
                 username: [{ validator: checkUsername, trigger: 'blur' }]
             },
-            checkedInterests: [''],
             interests: interestsOptions,
             SignUpMsg: ''
         };
@@ -90096,7 +90088,7 @@ var interestsOptions = ['人像', '城市', '旅行', '纪实', '街拍', '人�
         showMessage: function showMessage(content) {
             var _this2 = this;
 
-            this.$alert('这是一段内容', content, {
+            this.$alert(content, '', {
                 confirmButtonText: '确定',
                 callback: function callback(action) {
                     _this2.$message({
@@ -90109,22 +90101,28 @@ var interestsOptions = ['人像', '城市', '旅行', '纪实', '街拍', '人�
         submitForm: function submitForm(formName) {
             var _this3 = this;
 
-            console.log(this.signUpForm.username);
             this.$refs[formName].validate(function (valid) {
                 if (valid) {
-                    _this3.$http.post('/api/user/signup', {
-                        name: _this3.signUpForm.username,
-                        pwd: _this3.signUpForm.pass,
+                    _this3.$http.post('/user/signup', {
+                        nickname: _this3.signUpForm.username,
+                        password: _this3.signUpForm.pass,
                         sex: _this3.signUpForm.sex,
-                        interest: _this3.signUpForm.interest,
+                        interest: _this3.signUpForm.interest.join(";"),
                         age: _this3.signUpForm.age
+                        //                                avatar: this.signUpForm.avatar,
+                        //                                signature: this.signUpForm.signature
                     }, {
                         emulateJSON: true
                     }).then(function (response) {
-                        if (response.status === 201) {
-                            _this3.showMessage('成功！');
+                        if (response.status === 200) {
+                            _this3.showMessage('注册成功！');
+                            setTimeout(function () {
+                                _this3.$router.push('/homepage');
+                            }, 1000);
                         } else if (response.status === 410) {
                             alert('创建用户失败！错误代码：410');
+                        } else if (response.status === 500) {
+                            alert('昵称已被注册！');
                         } else {
                             alert('创建用户失败！错误代码：400');
                         }
@@ -90625,7 +90623,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("男")]), _vm._v(" "), _c('el-radio', {
     attrs: {
-      "label": 2
+      "label": 0
     }
   }, [_vm._v("女")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
@@ -90637,11 +90635,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "max": 5
     },
     model: {
-      value: (_vm.checkedInterests),
+      value: (_vm.signUpForm.interest),
       callback: function($$v) {
-        _vm.checkedInterests = $$v
+        _vm.$set(_vm.signUpForm, "interest", $$v)
       },
-      expression: "checkedInterests"
+      expression: "signUpForm.interest"
     }
   }, _vm._l((_vm.interests), function(interest) {
     return _c('el-checkbox', {
