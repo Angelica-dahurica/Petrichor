@@ -22,11 +22,11 @@
                 <el-form-item prop="sex">
                     <el-radio-group v-model="signUpForm.sex">
                         <el-radio :label="1">男</el-radio>
-                        <el-radio :label="2">女</el-radio>
+                        <el-radio :label="0">女</el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item prop="interest">
-                    <el-checkbox-group v-model="checkedInterests" :min="1" :max="5">
+                    <el-checkbox-group v-model="signUpForm.interest" :min="1" :max="5">
                         <el-checkbox v-for="interest in interests" :label="interest" :key="interest">{{interest}}</el-checkbox>
                     </el-checkbox-group>
                 </el-form-item>
@@ -59,8 +59,8 @@
                     return callback(new Error('请输入用户名'))
                 }
                 setTimeout(() => {
-                    if (value.length < 3 || value.length > 10) {
-                        callback(new Error('用户名长度必须在3和10之间！'))
+                    if (value.length < 1 || value.length > 10) {
+                        callback(new Error('用户名长度必须在1和10之间！'))
                     } else {
                         callback()
                     }
@@ -92,7 +92,9 @@
                     username: '',
                     sex: '',
                     interest: [],
-                    age: 0
+                    age: 0,
+//                    avatar: '',
+//                    signature: ''
                 },
                 signUpRules: {
                     pass: [
@@ -105,14 +107,13 @@
                         { validator: checkUsername, trigger: 'blur' }
                     ]
                 },
-                checkedInterests: [''],
                 interests: interestsOptions,
                 SignUpMsg: ''
             }
         },
         methods: {
             showMessage (content) {
-                this.$alert('这是一段内容', content, {
+                this.$alert(content, '', {
                     confirmButtonText: '确定',
                     callback: action => {
                         this.$message({
@@ -123,25 +124,31 @@
                 })
             },
             submitForm (formName) {
-                console.log(this.signUpForm.username);
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        this.$http.post('/api/user/signup',
+                         this.$http.post('/user/signup',
                             {
-                                name: this.signUpForm.username,
-                                pwd: this.signUpForm.pass,
+                                nickname: this.signUpForm.username,
+                                password: this.signUpForm.pass,
                                 sex: this.signUpForm.sex,
-                                interest: this.signUpForm.interest,
-                                age: this.signUpForm.age
+                                interest: this.signUpForm.interest.join(";"),
+                                age: this.signUpForm.age,
+//                                avatar: this.signUpForm.avatar,
+//                                signature: this.signUpForm.signature
                             },
                             {
                                 emulateJSON: true
                             })
                             .then(response => {
-                                if (response.status === 201) {
-                                    this.showMessage('成功！')
+                                if (response.status === 200) {
+                                    this.showMessage('注册成功！');
+                                    setTimeout(()=>{
+                                        this.$router.push('/homepage');
+                                    },1000);
                                 } else if (response.status === 410) {
                                     alert('创建用户失败！错误代码：410')
+                                } else if(response.status === 500){
+                                    alert('昵称已被注册！')
                                 } else {
                                     alert('创建用户失败！错误代码：400')
                                 }
