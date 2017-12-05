@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
 //        $picture = factory(\App\Picture::class, 1000)->create();
 //        $group = factory(\App\Group::class, 100)->create();
 //        $dynamic = factory(\App\Dynamic::class, 100)->create();
+        $like_picture = factory(\App\LikePicture::class, 99)->create();
     }
 }
