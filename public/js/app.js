@@ -89237,7 +89237,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, "\n.home-page {\n  margin: 0;\n}\n.home-page .main-page {\n  margin: 0;\n  height: 599px;\n  text-align: center;\n  font-family: \"Buxton Sketch\";\n  background: url(\"/images/home.jpg\");\n}\n.home-page .main-page .sign {\n  width: 98%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding-top: 20px;\n  padding-right: 20px;\n  font-size: 14px;\n  text-align: right;\n}\n.home-page .main-page .sign .home-sign-in {\n  width: 97%;\n}\n.home-page .main-page .sign .home-sign-up {\n  width: 3%;\n}\n.home-page .main-page .title {\n  font-size: 60px;\n  padding-top: 100px;\n}\n.home-page .main-page .description {\n  font-size: 20px;\n  margin-top: 20px;\n}\n.home-page .main-page .el-input {\n  width: 280px;\n  margin-top: 20px;\n}\n", ""]);
+exports.push([module.i, "\n.home-page {\n  margin: 0;\n}\n.home-page .el-menu {\n  background-color: #f4f8df;\n}\n.home-page .main-page {\n  margin: 0;\n  text-align: center;\n  font-family: \"Buxton Sketch\";\n  height: 599px;\n  background: url(\"/images/home.jpg\");\n}\n.home-page .main-page .sign {\n  width: 98%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding-top: 20px;\n  padding-right: 20px;\n  font-size: 14px;\n  text-align: right;\n}\n.home-page .main-page .sign .home-sign-in {\n  width: 97%;\n}\n.home-page .main-page .sign .home-sign-up {\n  width: 3%;\n}\n.home-page .main-page .title {\n  font-size: 60px;\n  padding-top: 100px;\n}\n.home-page .main-page .description {\n  font-size: 20px;\n  margin-top: 20px;\n}\n.home-page .main-page .el-input {\n  width: 280px;\n  margin-top: 20px;\n}\n.home-page .picture-list {\n  background-image: none !important;\n  padding: 30px 20px;\n}\n.home-page .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n  border-radius: 5px;\n  overflow: hidden;\n}\n.home-page .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
 
 // exports
 
@@ -89304,10 +89304,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
+            tag: true,
             input: '',
             pictures: [],
             activeIndex: '1'
@@ -89318,11 +89321,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleIconClick: function handleIconClick(ev) {
             var _this = this;
 
-            var url = this.$store.state.server + 'search/?query=' + this.input;
-            this.$http.get(url).then(function (response) {
+            this.$http.get('/pictures/description=' + this.input).then(function (response) {
                 response = response.body;
-                _this.pictures = response.subjects;
+                _this.pictures = response.data;
             });
+            this.tag = false;
+        },
+        handleSelect: function handleSelect(key, keyPath) {
+            this.tag = true;
+            this.input = '';
         }
     }
 });
@@ -89334,8 +89341,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "home-page"
-  }, [_c('div', {
-    staticClass: "main-page"
   }, [_c('el-menu', {
     staticClass: "el-menu-demo",
     attrs: {
@@ -89366,7 +89371,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "index": "3"
     }
-  }, [_vm._v("精选")])], 1)], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("精选")])], 1)], 1), _vm._v(" "), (_vm.tag) ? _c('div', {
+    staticClass: "main-page"
+  }, [_c('div', {
     staticClass: "sign"
   }, [_c('router-link', {
     staticClass: "home-sign-in",
@@ -89384,11 +89391,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "description"
   }, [_vm._v("the earthy scent produced when rain falls on dry soil")]), _vm._v(" "), _c('div', {
     staticClass: "description"
-  }, [_vm._v("a website for social")]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/homepage/find"
-    }
-  }, [_c('el-input', {
+  }, [_vm._v("a website for social")]), _vm._v(" "), _c('el-input', {
     attrs: {
       "icon": "search",
       "on-icon-click": _vm.handleIconClick
@@ -89400,7 +89403,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "input"
     }
-  })], 1)], 1)])
+  })], 1) : _c('div', {
+    staticClass: "picture-list"
+  }, _vm._l((_vm.pictures), function(picture) {
+    return _c('div', {
+      staticClass: "picture",
+      model: {
+        value: (_vm.pictures),
+        callback: function($$v) {
+          _vm.pictures = $$v
+        },
+        expression: "pictures"
+      }
+    }, [_c('img', {
+      attrs: {
+        "height": "280px",
+        "src": picture.picture_content
+      }
+    })])
+  }))], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -89483,7 +89504,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, "\n.home-page {\n  margin: 0;\n}\n.home-page .el-menu {\n  background-color: #f4f8df;\n}\n.home-page .main-page {\n  margin: 0;\n  text-align: center;\n  font-family: \"Buxton Sketch\";\n  background: url(\"/images/home.jpg\");\n}\n.home-page .main-page .title {\n  font-size: 60px;\n  padding-top: 100px;\n}\n.home-page .main-page .description {\n  font-size: 20px;\n  margin-top: 20px;\n}\n.home-page .main-page .el-input {\n  width: 280px;\n  margin-top: 20px;\n}\n.home-page .picture-list {\n  background-image: none !important;\n  padding: 30px 20px;\n}\n.home-page .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n}\n.home-page .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
+exports.push([module.i, "\n.home-page {\n  margin: 0;\n}\n.home-page .el-menu {\n  background-color: #f4f8df;\n}\n.home-page .main-page {\n  margin: 0;\n  text-align: center;\n  font-family: \"Buxton Sketch\";\n  background: url(\"/images/home.jpg\");\n}\n.home-page .main-page .title {\n  font-size: 60px;\n  padding-top: 100px;\n}\n.home-page .main-page .description {\n  font-size: 20px;\n  margin-top: 20px;\n}\n.home-page .main-page .el-input {\n  width: 280px;\n  margin-top: 20px;\n}\n.home-page .picture-list {\n  background-image: none !important;\n  padding: 30px 20px;\n}\n.home-page .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n  border-radius: 5px;\n  overflow: hidden;\n}\n.home-page .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
 
 // exports
 
@@ -90752,7 +90773,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, "\n.find {\n  background-color: #f4f8df;\n}\n.find .el-menu {\n  background-color: #f4f8df;\n}\n.find .tag-list {\n  background-color: #fff;\n  padding: 30px 20px;\n}\n.find .tag-list .tag {\n  border-radius: 5px;\n  overflow: hidden;\n  width: 360px;\n  height: 240px;\n  display: inline-block;\n  margin: 10px 10px;\n  position: relative;\n}\n.find .tag-list .tag .tag-content {\n  position: absolute;\n  height: 240px;\n  width: 360px;\n  text-align: center;\n  line-height: 240px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 0;\n}\n.find .tag-list .tag .tag-content:hover {\n  position: absolute;\n  height: 240px;\n  width: 360px;\n  text-align: center;\n  line-height: 240px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 20px;\n  color: #777;\n  background-color: rgba(211,211,211,0.5);\n}\n.find .picture-list {\n  background-color: #fff;\n  padding: 30px 20px;\n}\n.find .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n}\n.find .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
+exports.push([module.i, "\n.find {\n  background-color: #f4f8df;\n}\n.find .el-menu {\n  background-color: #f4f8df;\n}\n.find .tag-list {\n  background-color: #fff;\n  padding: 30px 20px;\n}\n.find .tag-list .tag {\n  border-radius: 5px;\n  overflow: hidden;\n  width: 360px;\n  height: 240px;\n  display: inline-block;\n  margin: 10px 10px;\n  position: relative;\n}\n.find .tag-list .tag .tag-content {\n  position: absolute;\n  height: 240px;\n  width: 360px;\n  text-align: center;\n  line-height: 240px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 0;\n}\n.find .tag-list .tag .tag-content:hover {\n  position: absolute;\n  height: 240px;\n  width: 360px;\n  text-align: center;\n  line-height: 240px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 20px;\n  color: #777;\n  background-color: rgba(211,211,211,0.5);\n}\n.find .picture-list {\n  background-color: #fff;\n  padding: 30px 20px;\n}\n.find .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n  border-radius: 5px;\n  overflow: hidden;\n}\n.find .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
 
 // exports
 
@@ -90806,6 +90827,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.flag = false;
         },
         handleSelect: function handleSelect(key, keyPath) {
+            this.pictures = [];
             this.flag = true;
         }
     }
@@ -90970,7 +90992,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, "\n.choice {\n  background-color: #f4f8df;\n}\n.choice .el-menu {\n  background-color: #f4f8df;\n}\n.choice .picture-list {\n  background-color: #fff;\n  padding: 30px 20px;\n}\n.choice .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n}\n.choice .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
+exports.push([module.i, "\n.choice {\n  background-color: #f4f8df;\n}\n.choice .el-menu {\n  background-color: #f4f8df;\n}\n.choice .picture-list {\n  background-color: #fff;\n  padding: 30px 20px;\n}\n.choice .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n  border-radius: 5px;\n  overflow: hidden;\n}\n.choice .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
 
 // exports
 

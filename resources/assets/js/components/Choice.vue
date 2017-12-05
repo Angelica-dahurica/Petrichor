@@ -43,6 +43,8 @@
                 display inline-block
                 margin 10px 10px
                 height 280px
+                border-radius 5px
+                overflow hidden
                 .img
                     margin 0
 </style>
