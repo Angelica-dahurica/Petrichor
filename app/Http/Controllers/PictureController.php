@@ -35,4 +35,22 @@ class PictureController extends Controller
             ->get();
         return $pictures;
     }
+
+    public static function getLike()
+    {
+        $id = DB::table('user')
+            ->select('userid', 'nickname', 'sex', 'interest', 'password', 'avatar', 'age', 'signature')
+            ->where('nickname', '=', $_COOKIE["username"])
+            ->first()->userid;
+
+        $pictures = DB::table('like_picture')
+            ->join('user', $id, '=', 'like_picture.userid')
+            ->join('picture', 'picture.pictureid', '=', 'like_picture.pictureid')
+            ->select('picture.pictureid', 'picture_album', 'picture_name', 'picture_description',
+                'picture_content', 'picture_publishtime', 'picture_tags')
+            ->distinct()
+            ->get();
+
+        return $pictures;
+    }
 }

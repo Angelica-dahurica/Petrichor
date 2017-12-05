@@ -40,3 +40,7 @@ Route::post('/user/signup', function (Request $user) {
 Route::post('/user/signin', function (Request $user) {
     return new UserResource(UserController::verify($user));
 });
+
+Route::get('/picture/like', function () {
+    return PictureResource::collection(PictureController::getLike());
+});

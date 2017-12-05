@@ -15842,6 +15842,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Find_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_Find_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Choice_vue__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Choice_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_Choice_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_My_vue__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_My_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_My_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -15878,6 +15880,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_vuex
 
 
 
+
 var routes = [{
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_7__components_Start_vue___default.a
@@ -15896,6 +15899,9 @@ var routes = [{
 }, {
     path: '/choice',
     component: __WEBPACK_IMPORTED_MODULE_12__components_Choice_vue___default.a
+}, {
+    path: '/my',
+    component: __WEBPACK_IMPORTED_MODULE_13__components_My_vue___default.a
 }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_3_vue_router__["a" /* default */]({
@@ -89306,6 +89312,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -89371,7 +89378,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "index": "3"
     }
-  }, [_vm._v("精选")])], 1)], 1), _vm._v(" "), (_vm.tag) ? _c('div', {
+  }, [_vm._v("精选")])], 1), _vm._v(" "), _c('el-menu-item', {
+    attrs: {
+      "index": "4"
+    }
+  }, [_vm._v("我的")])], 1), _vm._v(" "), (_vm.tag) ? _c('div', {
     staticClass: "main-page"
   }, [_c('div', {
     staticClass: "sign"
@@ -89536,6 +89547,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -89604,7 +89616,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "index": "3"
     }
-  }, [_vm._v("精选")])], 1)], 1), _vm._v(" "), (_vm.tag) ? _c('div', {
+  }, [_vm._v("精选")])], 1), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/my"
+    }
+  }, [_c('el-menu-item', {
+    attrs: {
+      "index": "4"
+    }
+  }, [_vm._v("我的")])], 1)], 1), _vm._v(" "), (_vm.tag) ? _c('div', {
     staticClass: "main-page"
   }, [_c('div', {
     staticClass: "title"
@@ -90805,6 +90825,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -90873,7 +90894,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "index": "3"
     }
-  }, [_vm._v("精选")])], 1)], 1), _vm._v(" "), (_vm.flag) ? _c('div', {
+  }, [_vm._v("精选")])], 1), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/my"
+    }
+  }, [_c('el-menu-item', {
+    attrs: {
+      "index": "4"
+    }
+  }, [_vm._v("我的")])], 1)], 1), _vm._v(" "), (_vm.flag) ? _c('div', {
     staticClass: "tag-list"
   }, _vm._l((_vm.tags), function(tag) {
     return _c('div', {
@@ -91018,6 +91047,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -91074,7 +91104,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "index": "3"
     }
-  }, [_vm._v("精选")])], 1)], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("精选")])], 1), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/my"
+    }
+  }, [_c('el-menu-item', {
+    attrs: {
+      "index": "4"
+    }
+  }, [_vm._v("我的")])], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "picture-list"
   }, _vm._l((_vm.pictures), function(picture) {
     return _c('div', {
@@ -91107,6 +91145,203 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(231)
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(233),
+  /* template */
+  __webpack_require__(234),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\xampp\\htdocs\\petrichor\\resources\\assets\\js\\components\\My.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] My.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-566427f2", Component.options)
+  } else {
+    hotAPI.reload("data-v-566427f2", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 231 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(232);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(16)("2bc15868", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-566427f2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/stylus-loader/index.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./My.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-566427f2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/stylus-loader/index.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./My.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 232 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(8)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.my {\n  margin: 0;\n}\n.my .el-menu {\n  background-color: #f4f8df;\n}\n.my .picture-list {\n  padding: 30px 20px;\n}\n.my .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n  border-radius: 5px;\n  overflow: hidden;\n}\n.my .picture-list .picture .img {\n  margin: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 233 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            pictures: [],
+            activeIndex: '4'
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        this.$http.get('/picture/like').then(function (response) {
+            response = response.body;
+            _this.pictures = response.data;
+        });
+    }
+});
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "my"
+  }, [_c('el-menu', {
+    staticClass: "el-menu-demo",
+    attrs: {
+      "default-active": _vm.activeIndex,
+      "mode": "horizontal"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": "/homepage"
+    }
+  }, [_c('el-menu-item', {
+    attrs: {
+      "index": "1"
+    }
+  }, [_vm._v("首页")])], 1), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/find"
+    }
+  }, [_c('el-menu-item', {
+    attrs: {
+      "index": "2"
+    }
+  }, [_vm._v("发现")])], 1), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/choice"
+    }
+  }, [_c('el-menu-item', {
+    attrs: {
+      "index": "3"
+    }
+  }, [_vm._v("精选")])], 1), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/my"
+    }
+  }, [_c('el-menu-item', {
+    attrs: {
+      "index": "4"
+    }
+  }, [_vm._v("我的")])], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "picture-list"
+  }, _vm._l((_vm.pictures), function(picture) {
+    return _c('div', {
+      staticClass: "picture",
+      model: {
+        value: (_vm.pictures),
+        callback: function($$v) {
+          _vm.pictures = $$v
+        },
+        expression: "pictures"
+      }
+    }, [_c('img', {
+      attrs: {
+        "height": "280px",
+        "src": picture.picture_content
+      }
+    })])
+  }))], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-566427f2", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

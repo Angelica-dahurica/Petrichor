@@ -39,6 +39,10 @@ Route::get('/choice', function () {
     return view('choice');
 });
 
+Route::get('/my', function () {
+    return view('my');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

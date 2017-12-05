@@ -33,6 +33,7 @@ import signin from './components/SignIn.vue'
 import signup from './components/SignUp.vue'
 import find from './components/Find.vue'
 import choice from './components/Choice.vue'
+import my from './components/My.vue'
 
 const routes = [{
     path: '/',
@@ -52,6 +53,9 @@ const routes = [{
 }, {
     path: '/choice',
     component: choice
+}, {
+    path: '/my',
+    component: my
 }
 ];
 

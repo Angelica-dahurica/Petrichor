@@ -50,6 +50,10 @@ var _Choice = require('./components/Choice.vue');
 
 var _Choice2 = _interopRequireDefault(_Choice);
 
+var _My = require('./components/My.vue');
+
+var _My2 = _interopRequireDefault(_My);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -92,6 +96,9 @@ var routes = [{
 }, {
     path: '/choice',
     component: _Choice2.default
+}, {
+    path: '/my',
+    component: _My2.default
 }];
 
 var router = new _vueRouter2.default({

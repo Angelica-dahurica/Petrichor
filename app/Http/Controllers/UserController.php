@@ -31,9 +31,12 @@ class UserController extends Controller
             ->select('userid', 'nickname', 'sex', 'interest', 'password', 'avatar', 'age', 'signature')
             ->where('nickname', '=', $request->nickname)
             ->first();
-        if(decrypt($user->password)==$request->password)
+        if(decrypt($user->password)==$request->password) {
+            setcookie("username", $user->nickname,time()+3600, '/');
             return $user;
+        }
         else
             return null;
     }
+
 }

@@ -4,6 +4,7 @@
             <router-link to="/homepage"><el-menu-item index="1">首页</el-menu-item></router-link>
             <router-link to="/find"><el-menu-item index="2">发现</el-menu-item></router-link>
             <router-link to="/choice"><el-menu-item index="3">精选</el-menu-item></router-link>
+            <router-link to="/my"><el-menu-item index="4">我的</el-menu-item></router-link>
         </el-menu>
         <div class="main-page" v-if="tag">
             <div class="title">petrichor</div>
