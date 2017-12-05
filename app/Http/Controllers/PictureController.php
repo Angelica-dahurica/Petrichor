@@ -53,4 +53,12 @@ class PictureController extends Controller
 
         return $pictures;
     }
+
+//    public static function get($id)
+//    {
+//        $picture = DB::table('picture')
+//            ->where('pictureid', '=', $id)
+//            ->first();
+//        return $picture;
+//    }
 }

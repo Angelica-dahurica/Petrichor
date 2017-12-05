@@ -2,8 +2,6 @@
 
 use Illuminate\Http\Request;
 
-use \App\picture;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,6 +28,14 @@ Route::get('/find/tag={tag}', function ($tag) {
     return PictureResource::collection(PictureController::getTags($tag));
 });
 
+Route::get('/picture/like', function () {
+    return PictureResource::collection(PictureController::getLike());
+});
+
+//Route::get('/find/pictureid={id}', function ($id) {
+//    return new PictureResource(PictureController::get($id));
+//});
+
 use App\Http\Resources\User as UserResource;
 use \App\Http\Controllers\UserController as UserController;
 
@@ -39,8 +45,4 @@ Route::post('/user/signup', function (Request $user) {
 
 Route::post('/user/signin', function (Request $user) {
     return new UserResource(UserController::verify($user));
-});
-
-Route::get('/picture/like', function () {
-    return PictureResource::collection(PictureController::getLike());
 });

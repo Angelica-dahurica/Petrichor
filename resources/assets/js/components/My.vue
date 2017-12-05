@@ -9,6 +9,7 @@
         <div class="picture-list">
             <div class="picture" v-model="pictures" v-for="picture in pictures">
                 <img height="280px" :src=picture.picture_content>
+                <div class="picture-content">{{ picture.picture_description }}</div>
             </div>
         </div>
     </div>
@@ -44,6 +45,30 @@
                 height 280px
                 border-radius 5px
                 overflow hidden
+                position relative
                 .img
                     margin 0
+                .picture-content
+                    position absolute
+                    height 280px
+                    width 100%
+                    text-align center
+                    line-height 280px
+                    z-index 1
+                    left 0
+                    top 0
+                    font-size 0
+                .picture-content:hover {
+                    position absolute
+                    height 280px
+                    width 100%
+                    text-align center
+                    line-height 280px
+                    z-index 1
+                    left 0
+                    top 0
+                    font-size 20px
+                    color #777777
+                    background-color:rgba(211,211,211,0.5)
+                }
 </style>
