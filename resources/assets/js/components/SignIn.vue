@@ -82,11 +82,8 @@
                             }).then(response => {
                             if (response.status === 200) {
                                 this.showMessage('登陆成功！');
-//                                const token = response.data.token;
-//                                window.localStorage.setItem('token', token);
-//                                console.log(window.localStorage.getItem('token'));
-                                setTimeout(()=>{
-                                    this.$router.push('/homepage');
+                              setTimeout(()=>{
+                                    this.$router.push('/');
                                 },1000);
                             }
                         }).catch(response => {

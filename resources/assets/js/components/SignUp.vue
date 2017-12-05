@@ -143,7 +143,7 @@
                                 if (response.status === 200) {
                                     this.showMessage('注册成功！');
                                     setTimeout(()=>{
-                                        this.$router.push('/homepage');
+                                        this.$router.push('/');
                                     },1000);
                                 } else if (response.status === 410) {
                                     alert('创建用户失败！错误代码：410')

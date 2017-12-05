@@ -1,15 +1,28 @@
 <template>
     <div class="home-page">
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
-            <router-link to="/homepage"><el-menu-item index="1">首页</el-menu-item></router-link>
-            <router-link to="/find"><el-menu-item index="2">发现</el-menu-item></router-link>
-            <router-link to="/choice"><el-menu-item index="3">精选</el-menu-item></router-link>
-            <el-menu-item index="4">我的</el-menu-item>
-        </el-menu>
         <div class="main-page" v-if="tag">
-            <div class="sign">
-                <router-link to="/signin" class="home-sign-in">登录</router-link>
-                <router-link to="/signup" class="home-sign-up">注册</router-link>
+            <div class="not-signed-in" v-if="notsignedin">
+                <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+                    <router-link to="/"><el-menu-item index="1" @click="handleSignIn">首页</el-menu-item></router-link>
+                    <router-link to="/find"><el-menu-item index="2">发现</el-menu-item></router-link>
+                    <router-link to="/choice"><el-menu-item index="3">精选</el-menu-item></router-link>
+                    <router-link to="/"><el-menu-item index="4">我的</el-menu-item></router-link>
+                </el-menu>
+                <div class="sign">
+                    <router-link to="/signin" class="home-sign-in">登录</router-link>
+                    <router-link to="/signup" class="home-sign-up">注册</router-link>
+                </div>
+            </div>
+            <div class="signed-in" v-else>
+                <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+                    <router-link to="/"><el-menu-item index="1" @click="handleSignIn">首页</el-menu-item></router-link>
+                    <router-link to="/find"><el-menu-item index="2">发现</el-menu-item></router-link>
+                    <router-link to="/choice"><el-menu-item index="3">精选</el-menu-item></router-link>
+                    <router-link to="/my"><el-menu-item index="4">我的</el-menu-item></router-link>
+                </el-menu>
+                <div class="sign">
+                    <div class="home-sign-out" @click="handleSignOut">退出</div>
+                </div>
             </div>
             <div class="title">petrichor</div>
             <div class="description">the earthy scent produced when rain falls on dry soil</div>
@@ -28,19 +41,58 @@
     export default {
         data () {
             return {
+                notsignedin: true,
                 tag: true,
                 input: '',
                 pictures: [],
                 activeIndex: '1',
             }
         },
+        created(){
+            console.log(document.cookie);
+            let item = document.cookie.split(';');
+
+            for (let i = 0; i < item.length; i++) {
+                let c = item[i];
+                while (c.startsWith(' '))
+                    c = c.substring(1);
+                if (c.startsWith('username=') && c.substring(9, c.length)){
+                    this.notsignedin = false;
+                    return;
+                } else {
+                    this.notsignedin = true;
+
+                }
+            }
+        },
         methods: {
-            handleIconClick (ev) {
+            handleIconClick () {
                 this.$http.get('/pictures/description=' + this.input).then((response) => {
                     response = response.body;
                     this.pictures = response.data
                 });
                 this.tag = false;
+            },
+            handleSignOut () {
+                this.notsignedin = true;
+                this.setCookie("username", "", -1);
+            },
+            handleSignIn (ev) {
+                let item = document.cookie.split(';');
+                for (let i = 0; i < item.length; i++) {
+                    let c = item[i];
+                    while (c.startsWith(' '))
+                        c = c.substring(1);
+                    if (c.startsWith('username=') && c.substring(9, c.length)){
+                        this.notsignedin = false;
+                    }
+                }
+            },
+            setCookie: function (cname, cvalue, exdays) {
+                let d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                let expires = "expires=" + d.toUTCString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
             },
             handleSelect(key, keyPath) {
                 this.tag = true;
@@ -53,25 +105,40 @@
 <style lang="stylus" rel="stylesheet/stylus">
     .home-page
         margin 0
-        .el-menu
-            background-color #F4F8DF
         .main-page
             margin 0
             text-align center
             font-family "Buxton Sketch"
             height 599px
             background url("/images/home.jpg")
-            .sign
-                width 98%
-                display flex
-                padding-top 20px
-                padding-right 20px
-                font-size 14px
-                text-align right
-                .home-sign-in
-                    width 97%
-                .home-sign-up
-                    width 3%
+            .not-signed-in
+                margin 0
+                .el-menu
+                    background-color #F4F8DF
+                .sign
+                    width 98%
+                    display flex
+                    padding-top 20px
+                    padding-right 20px
+                    font-size 14px
+                    text-align right
+                    .home-sign-in
+                        width 97%
+                    .home-sign-up
+                        width 3%
+            .signed-in
+                margin 0
+                .el-menu
+                    background-color #F4F8DF
+                .sign
+                    width 98%
+                    display flex
+                    padding-top 20px
+                    padding-right 20px
+                    font-size 14px
+                    text-align right
+                    .home-sign-out
+                        width 97%
             .title
                 font-size 60px
                 padding-top 100px

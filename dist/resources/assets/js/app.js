@@ -30,10 +30,6 @@ var _Start = require('./components/Start.vue');
 
 var _Start2 = _interopRequireDefault(_Start);
 
-var _HomePage = require('./components/HomePage.vue');
-
-var _HomePage2 = _interopRequireDefault(_HomePage);
-
 var _SignIn = require('./components/SignIn.vue');
 
 var _SignIn2 = _interopRequireDefault(_SignIn);
@@ -87,9 +83,6 @@ var routes = [{
 }, {
     path: '/signup',
     component: _SignUp2.default
-}, {
-    path: '/homepage',
-    component: _HomePage2.default
 }, {
     path: '/find',
     component: _Find2.default

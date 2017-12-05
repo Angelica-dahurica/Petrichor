@@ -28,7 +28,6 @@ Vue.use(Vuex);
  */
 import App from './App.vue'
 import start from './components/Start.vue'
-import homepage from './components/HomePage.vue'
 import signin from './components/SignIn.vue'
 import signup from './components/SignUp.vue'
 import find from './components/Find.vue'
@@ -44,9 +43,6 @@ const routes = [{
 }, {
     path: '/signup',
     component: signup
-}, {
-    path: '/homepage',
-    component: homepage
 }, {
     path: '/find',
     component: find
