@@ -37,13 +37,18 @@ Route::get('/pictures/pictureid={id}', function ($id) {
     return PictureController::getIsLiked($id);
 });
 
+//点赞or取消
+Route::post('/like/picture', function (Request $request) {
+    return PictureController::like($request);
+});
+
 use App\Http\Resources\User as UserResource;
 use \App\Http\Controllers\UserController as UserController;
 
-Route::post('/user/signup', function (Request $user) {
-    return new UserResource(UserController::create($user));
+Route::post('/user/signup', function (Request $request) {
+    return new UserResource(UserController::create($request));
 });
 
-Route::post('/user/signin', function (Request $user) {
-    return new UserResource(UserController::verify($user));
+Route::post('/user/signin', function (Request $request) {
+    return new UserResource(UserController::verify($request));
 });

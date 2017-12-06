@@ -89237,7 +89237,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, "\n.home-page {\n  margin: 0;\n}\n.home-page .main-page {\n  margin: 0;\n  text-align: center;\n  font-family: \"Buxton Sketch\";\n  height: 599px;\n  background: url(\"/images/home.jpg\");\n}\n.home-page .main-page .not-signed-in {\n  margin: 0;\n}\n.home-page .main-page .not-signed-in .sign {\n  width: 98%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding-top: 20px;\n  padding-right: 20px;\n  font-size: 14px;\n  text-align: right;\n}\n.home-page .main-page .not-signed-in .sign .home-sign-in {\n  width: 97%;\n}\n.home-page .main-page .not-signed-in .sign .home-sign-up {\n  width: 3%;\n}\n.home-page .main-page .signed-in {\n  margin: 0;\n}\n.home-page .main-page .signed-in .sign {\n  width: 98%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding-top: 20px;\n  padding-right: 20px;\n  font-size: 14px;\n  text-align: right;\n}\n.home-page .main-page .signed-in .sign .home-sign-out {\n  width: 97%;\n}\n.home-page .main-page .title {\n  font-size: 60px;\n  padding-top: 100px;\n}\n.home-page .main-page .description {\n  font-size: 20px;\n  margin-top: 20px;\n}\n.home-page .main-page .el-input {\n  width: 280px;\n  margin-top: 20px;\n}\n.home-page .search {\n  margin: 0;\n}\n.home-page .search .picture-list {\n  background-image: none !important;\n  padding: 30px 20px;\n}\n.home-page .search .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n  border-radius: 5px;\n  overflow: hidden;\n  position: relative;\n}\n.home-page .search .picture-list .picture .img {\n  margin: 0;\n}\n.home-page .search .picture-list .picture .picture-content {\n  position: absolute;\n  height: 280px;\n  width: 100%;\n  text-align: center;\n  line-height: 280px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 0;\n}\n.home-page .search .picture-list .picture .picture-content .liked {\n  position: absolute;\n  width: 100%;\n  margin: 0;\n  line-height: 280px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 0;\n}\n.home-page .search .picture-list .picture .picture-content .liked:hover {\n  position: absolute;\n  width: 100%;\n  margin: 0;\n  line-height: 280px;\n  z-index: 1;\n  left: 40%;\n  top: 40%;\n  font-size: 20px;\n}\n.home-page .search .picture-list .picture .picture-content .not-liked {\n  position: absolute;\n  width: 100%;\n  margin: 0;\n  line-height: 280px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 0;\n}\n.home-page .search .picture-list .picture .picture-content .not-liked:hover {\n  position: absolute;\n  width: 100%;\n  margin: 0;\n  line-height: 280px;\n  z-index: 1;\n  left: 40%;\n  top: 40%;\n  font-size: 20px;\n}\n.home-page .search .picture-list .picture .picture-content:hover {\n  position: absolute;\n  height: 280px;\n  width: 100%;\n  text-align: center;\n  line-height: 280px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 20px;\n  color: #777;\n  background-color: rgba(211,211,211,0.5);\n}\n", ""]);
+exports.push([module.i, "\n.home-page {\n  margin: 0;\n}\n.home-page .main-page {\n  margin: 0;\n  text-align: center;\n  font-family: \"Buxton Sketch\";\n  height: 599px;\n  background: url(\"/images/home.jpg\");\n}\n.home-page .main-page .not-signed-in {\n  margin: 0;\n}\n.home-page .main-page .not-signed-in .sign {\n  width: 98%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding-top: 20px;\n  padding-right: 20px;\n  font-size: 14px;\n  text-align: right;\n}\n.home-page .main-page .not-signed-in .sign .home-sign-in {\n  width: 3%;\n  margin-left: 90%;\n}\n.home-page .main-page .not-signed-in .sign .home-sign-up {\n  width: 3%;\n  margin-left: 2%;\n}\n.home-page .main-page .signed-in {\n  margin: 0;\n}\n.home-page .main-page .signed-in .sign {\n  width: 98%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding-top: 20px;\n  padding-right: 20px;\n  font-size: 14px;\n  text-align: right;\n}\n.home-page .main-page .signed-in .sign .home-sign-out {\n  width: 97%;\n}\n.home-page .main-page .title {\n  font-size: 60px;\n  padding-top: 100px;\n}\n.home-page .main-page .description {\n  font-size: 20px;\n  margin-top: 20px;\n}\n.home-page .main-page .el-input {\n  width: 280px;\n  margin-top: 20px;\n}\n.home-page .search {\n  margin: 0;\n}\n.home-page .search .picture-list {\n  background-image: none !important;\n  padding: 30px 20px;\n}\n.home-page .search .picture-list .picture {\n  display: inline-block;\n  margin: 10px 10px;\n  height: 280px;\n  border-radius: 5px;\n  overflow: hidden;\n  position: relative;\n}\n.home-page .search .picture-list .picture .img {\n  margin: 0;\n}\n.home-page .search .picture-list .picture .picture-content {\n  position: absolute;\n  height: 280px;\n  width: 100%;\n  text-align: center;\n  line-height: 280px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 0;\n}\n.home-page .search .picture-list .picture .picture-content .liked {\n  position: absolute;\n  width: 100%;\n  margin: 0;\n  line-height: 280px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 0;\n}\n.home-page .search .picture-list .picture .picture-content .liked:hover {\n  position: absolute;\n  width: 100%;\n  margin: 0;\n  line-height: 280px;\n  z-index: 1;\n  left: 40%;\n  top: 40%;\n  font-size: 20px;\n}\n.home-page .search .picture-list .picture .picture-content .not-liked {\n  position: absolute;\n  width: 100%;\n  margin: 0;\n  line-height: 280px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 0;\n}\n.home-page .search .picture-list .picture .picture-content .not-liked:hover {\n  position: absolute;\n  width: 100%;\n  margin: 0;\n  line-height: 280px;\n  z-index: 1;\n  left: 40%;\n  top: 40%;\n  font-size: 20px;\n}\n.home-page .search .picture-list .picture .picture-content:hover {\n  position: absolute;\n  height: 280px;\n  width: 100%;\n  text-align: center;\n  line-height: 280px;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  font-size: 20px;\n  color: #777;\n  background-color: rgba(211,211,211,0.5);\n}\n", ""]);
 
 // exports
 
@@ -89415,6 +89415,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.likepicture = response.body;
                 _this2.isliked = _this2.likepicture.userid !== 0;
             });
+        },
+        likeThisPicture: function likeThisPicture($id) {
+            this.$http.post('/like/picture', {
+                pictureid: $id,
+                isLiked: this.isliked
+            }, {
+                emulateJSON: true
+            });
+            this.isliked = !this.isliked;
         }
     }
 });
@@ -89663,15 +89672,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "height": "280px",
         "src": picture.picture_content
-      },
-      on: {
-        "click": function($event) {}
       }
     }), _vm._v(" "), _c('div', {
       staticClass: "picture-content",
       on: {
         "mouseenter": function($event) {
           _vm.enter(picture.pictureid)
+        },
+        "click": function($event) {
+          _vm.likeThisPicture(picture.pictureid)
         }
       }
     }, [_vm._v("\n                    " + _vm._s(picture.picture_description) + "\n                    "), (_vm.isliked) ? _c('div', {
@@ -90889,6 +90898,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.likepicture = response.body;
                 _this2.isliked = _this2.likepicture.userid !== 0;
             });
+        },
+        likeThisPicture: function likeThisPicture($id) {
+            this.$http.post('/like/picture', {
+                pictureid: $id,
+                isLiked: this.isliked
+            }, {
+                emulateJSON: true
+            });
+            this.isliked = !this.isliked;
         }
     }
 });
@@ -90981,6 +90999,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "mouseenter": function($event) {
           _vm.enter(picture.pictureid)
+        },
+        "click": function($event) {
+          _vm.likeThisPicture(picture.pictureid)
         }
       }
     }, [_vm._v("\n                " + _vm._s(picture.picture_description) + "\n                "), (_vm.isliked) ? _c('div', {
@@ -91135,6 +91156,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.likepicture = response.body;
                 _this2.isliked = _this2.likepicture.userid !== 0;
             });
+        },
+        likeThisPicture: function likeThisPicture($id) {
+            this.$http.post('/like/picture', {
+                pictureid: $id,
+                isLiked: this.isliked
+            }, {
+                emulateJSON: true
+            });
+            this.isliked = !this.isliked;
         }
     }
 });
@@ -91206,6 +91236,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "mouseenter": function($event) {
           _vm.enter(picture.pictureid)
+        },
+        "click": function($event) {
+          _vm.likeThisPicture(picture.pictureid)
         }
       }
     }, [_vm._v("\n                " + _vm._s(picture.picture_description) + "\n                "), (_vm.isliked) ? _c('div', {
@@ -91371,6 +91404,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.likepicture = response.body;
                 _this2.isliked = _this2.likepicture.userid !== 0;
             });
+        },
+        likeThisPicture: function likeThisPicture($id) {
+            this.$http.post('/like/picture', {
+                pictureid: $id,
+                isLiked: this.isliked
+            }, {
+                emulateJSON: true
+            });
+            this.isliked = !this.isliked;
         }
     }
 });
@@ -91442,6 +91484,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "mouseenter": function($event) {
           _vm.enter(picture.pictureid)
+        },
+        "click": function($event) {
+          _vm.likeThisPicture(picture.pictureid)
         }
       }
     }, [_vm._v("\n                " + _vm._s(picture.picture_description) + "\n                "), (_vm.isliked) ? _c('div', {

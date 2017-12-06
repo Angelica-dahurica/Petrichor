@@ -48,8 +48,8 @@
             </div>
             <div class="picture-list">
                 <div class="picture" v-model="pictures" v-for="picture in pictures">
-                    <img height="280px" :src=picture.picture_content @click="">
-                    <div class="picture-content" @mouseenter="enter(picture.pictureid)">
+                    <img height="280px" :src=picture.picture_content>
+                    <div class="picture-content" @mouseenter="enter(picture.pictureid)" @click="likeThisPicture(picture.pictureid)">
                         {{ picture.picture_description }}
                         <div class="liked" v-if="isliked"><i class="el-icon-star-on"></i></div>
                         <div class="not-liked" v-else><i class="el-icon-star-off"></i></div>
@@ -126,6 +126,15 @@
                     this.isliked = this.likepicture.userid !== 0;
                 });
             },
+            likeThisPicture: function($id){
+                this.$http.post('/like/picture', {
+                    pictureid: $id,
+                    isLiked: this.isliked
+                },{
+                    emulateJSON: true
+                });
+                this.isliked = !this.isliked;
+            }
         }
     }
 </script>
@@ -149,9 +158,11 @@
                     font-size 14px
                     text-align right
                     .home-sign-in
-                        width 97%
+                        width 3%
+                        margin-left 90%
                     .home-sign-up
                         width 3%
+                        margin-left 2%
             .signed-in
                 margin 0
                 .sign
