@@ -32,9 +32,10 @@ Route::get('/picture/like', function () {
     return PictureResource::collection(PictureController::getLike());
 });
 
-//Route::get('/find/pictureid={id}', function ($id) {
-//    return new PictureResource(PictureController::get($id));
-//});
+//是否是点过赞的
+Route::get('/pictures/pictureid={id}', function ($id) {
+    return PictureController::getIsLiked($id);
+});
 
 use App\Http\Resources\User as UserResource;
 use \App\Http\Controllers\UserController as UserController;

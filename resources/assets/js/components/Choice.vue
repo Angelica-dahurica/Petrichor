@@ -9,7 +9,11 @@
         <div class="picture-list">
             <div class="picture" v-model="pictures" v-for="picture in pictures">
                 <img height="280px" :src=picture.picture_content>
-                <div class="picture-content">{{ picture.picture_description }}</div>
+                <div class="picture-content" @mouseenter="enter(picture.pictureid)">
+                    {{ picture.picture_description }}
+                    <div class="liked" v-if="isliked"><i class="el-icon-star-on"></i></div>
+                    <div class="not-liked" v-else><i class="el-icon-star-off"></i></div>
+                </div>
             </div>
         </div>
     </div>
@@ -21,7 +25,9 @@
             return {
                 activeIndex: '3',
                 pictures: [],
-                picture: {}
+                picture: {},
+                likepicture: {},
+                isliked: false
             }
         },
         created () {
@@ -29,6 +35,14 @@
                 response = response.body;
                 this.pictures = response.data;
             })
+        },
+        methods: {
+            enter: function($id){
+                this.$http.get('/pictures/pictureid=' + $id).then((response) => {
+                    this.likepicture = response.body;
+                    this.isliked = this.likepicture.userid !== 0;
+                });
+            },
         }
     }
 </script>
@@ -36,8 +50,6 @@
 <style lang="stylus" rel="stylesheet/stylus">
     .choice
         background-color #F4F8DF
-        .el-menu
-            background-color #F4F8DF
         .picture-list
             background-color #fff
             padding 30px 20px
@@ -60,6 +72,44 @@
                     left 0
                     top 0
                     font-size 0
+                    .liked
+                        position absolute
+                        width 100%
+                        margin 0
+                        line-height 280px
+                        z-index 1
+                        left 0
+                        top 0
+                        font-size 0
+                    .liked:hover {
+                        position absolute
+                        width 100%
+                        margin 0
+                        line-height 280px
+                        z-index 1
+                        left 40%
+                        top 40%
+                        font-size 20px
+                    }
+                    .not-liked
+                        position absolute
+                        width 100%
+                        margin 0
+                        line-height 280px
+                        z-index 1
+                        left 0
+                        top 0
+                        font-size 0
+                    .not-liked:hover {
+                        position absolute
+                        width 100%
+                        margin 0
+                        line-height 280px
+                        z-index 1
+                        left 40%
+                        top 40%
+                        font-size 20px
+                    }
                 .picture-content:hover {
                     position absolute
                     height 280px
