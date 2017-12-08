@@ -16,18 +16,22 @@ use Illuminate\Http\Request;
 use App\Http\Resources\Picture as PictureResource;
 use \App\Http\Controllers\PictureController as PictureController;
 
+//热门图片
 Route::get('/pictures', function () {
     return PictureResource::collection(PictureController::getHot());
 });
 
+//搜索
 Route::get('/pictures/description={content}', function ($content) {
     return PictureResource::collection(PictureController::getDescrip($content));
 });
 
+//标签
 Route::get('/find/tag={tag}', function ($tag) {
     return PictureResource::collection(PictureController::getTags($tag));
 });
 
+//我喜欢的
 Route::get('/picture/like', function () {
     return PictureResource::collection(PictureController::getLike());
 });
@@ -45,10 +49,12 @@ Route::post('/like/picture', function (Request $request) {
 use App\Http\Resources\User as UserResource;
 use \App\Http\Controllers\UserController as UserController;
 
+//注册
 Route::post('/user/signup', function (Request $request) {
     return new UserResource(UserController::create($request));
 });
 
+//登录
 Route::post('/user/signin', function (Request $request) {
     return new UserResource(UserController::verify($request));
 });

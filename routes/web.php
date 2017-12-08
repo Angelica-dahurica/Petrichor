@@ -12,9 +12,6 @@
 |
 */
 
-use App\Picture;
-use App\User;
-
 Route::get('/', function () {
     return view('start');
 });
@@ -25,10 +22,6 @@ Route::get('/signin', function () {
 
 Route::get('/signup', function () {
     return view('signup');
-});
-
-Route::get('/homepage', function () {
-    return view('homepage');
 });
 
 Route::get('/find', function () {
