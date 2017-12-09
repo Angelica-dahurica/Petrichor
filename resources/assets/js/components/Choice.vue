@@ -9,8 +9,10 @@
         <div class="picture-list">
             <div class="picture" v-model="pictures" v-for="picture in pictures">
                 <img height="280px" :src=picture.picture_content>
+                <router-link :to="{name:'picture-detail',params:{id:picture.pictureid}}">
+                    <div class="picture-detail"></div>
+                </router-link>
                 <div class="picture-content" @mouseenter="enter(picture.pictureid)" @click="likeThisPicture(picture.pictureid)">
-                    {{ picture.picture_description }}
                     <div class="liked" v-if="isliked"><i class="el-icon-star-on"></i></div>
                     <div class="not-liked" v-else><i class="el-icon-star-off"></i></div>
                 </div>
@@ -71,65 +73,59 @@
                 position relative
                 .img
                     margin 0
-                .picture-content
+                .picture-detail
                     position absolute
+                    width 90%
                     height 280px
-                    width 100%
-                    text-align center
-                    line-height 280px
                     z-index 1
                     left 0
                     top 0
                     font-size 0
+                .picture-content
+                    position absolute
+                    height 280px
+                    width 10%
+                    z-index 1
+                    left 90%
+                    top 0
+                    font-size 0
                     .liked
                         position absolute
-                        width 100%
+                        width 20px
                         margin 0
-                        line-height 280px
+                        line-height 20px
                         z-index 1
                         left 0
-                        top 0
+                        top 90%
                         font-size 0
                     .liked:hover {
                         position absolute
-                        width 100%
+                        width 20px
                         margin 0
-                        line-height 280px
+                        line-height 20px
                         z-index 1
-                        left 40%
-                        top 40%
+                        left 0
+                        top 90%
                         font-size 20px
                     }
                     .not-liked
                         position absolute
-                        width 100%
+                        width 20px
                         margin 0
-                        line-height 280px
+                        line-height 20px
                         z-index 1
                         left 0
-                        top 0
+                        top 90%
                         font-size 0
                     .not-liked:hover {
                         position absolute
-                        width 100%
+                        width 20px
                         margin 0
-                        line-height 280px
+                        line-height 20px
                         z-index 1
-                        left 40%
-                        top 40%
+                        left 0
+                        top 90%
                         font-size 20px
                     }
-                .picture-content:hover {
-                    position absolute
-                    height 280px
-                    width 100%
-                    text-align center
-                    line-height 280px
-                    z-index 1
-                    left 0
-                    top 0
-                    font-size 20px
-                    color #777777
-                    background-color:rgba(211,211,211,0.5)
-    }
+
 </style>

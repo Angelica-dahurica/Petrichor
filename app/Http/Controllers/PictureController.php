@@ -93,7 +93,6 @@ class PictureController extends Controller
                 ->where('userid', '=', $userid)
                 ->where('pictureid', '=', $request->pictureid)
                 ->delete();
-            echo 'delete';
         }else{
             DB::table('like_picture')
                 ->insert([
@@ -101,7 +100,28 @@ class PictureController extends Controller
                     'pictureid' => $request->pictureid,
                     'like_time' => date("Y-m-d H:i:s")
                 ]);
-            echo 'insert';
         }
     }
+
+    public static function get($id)
+    {
+        $picture = DB::table('picture')
+            ->where('pictureid', '=', $id)
+            ->first();
+        return $picture;
+    }
+
+    public static function upload(Request $request)
+    {
+        $id = DB::table('picture')
+            ->insertGetId([
+                'picture_album' => $request->picture_album,
+                'picture_name' => $request->picture_name,
+                'picture_description' => $request->picture_description,
+                'picture_content' => $request->picture_content,
+                'picture_publishtime' => date("Y-m-d H:i:s"),
+                'picture_tags' => $request->picture_tags,
+            ]);
+    }
+
 }

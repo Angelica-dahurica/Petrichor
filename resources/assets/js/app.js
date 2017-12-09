@@ -33,6 +33,8 @@ import signup from './components/SignUp.vue'
 import find from './components/Find.vue'
 import choice from './components/Choice.vue'
 import my from './components/My.vue'
+import admin from './components/Admin.vue'
+import detail from './components/Detail.vue'
 
 const routes = [{
     path: '/',
@@ -52,6 +54,13 @@ const routes = [{
 }, {
     path: '/my',
     component: my
+}, {
+    path: '/admin',
+    component: admin
+}, {
+    path: '/detail/:id',
+    component: detail,
+    name: 'picture-detail'
 }
 ];
 

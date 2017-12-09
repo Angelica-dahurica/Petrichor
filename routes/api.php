@@ -46,6 +46,16 @@ Route::post('/like/picture', function (Request $request) {
     return PictureController::like($request);
 });
 
+//图片详情
+Route::get('/pictureid={id}', function ($id) {
+    return new PictureResource(PictureController::get($id));
+});
+
+//上传
+Route::post('/picture/upload', function (Request $request) {
+    return PictureController::upload($request);
+});
+
 use App\Http\Resources\User as UserResource;
 use \App\Http\Controllers\UserController as UserController;
 

@@ -50,6 +50,14 @@ var _My = require('./components/My.vue');
 
 var _My2 = _interopRequireDefault(_My);
 
+var _Admin = require('./components/Admin.vue');
+
+var _Admin2 = _interopRequireDefault(_Admin);
+
+var _Detail = require('./components/Detail.vue');
+
+var _Detail2 = _interopRequireDefault(_Detail);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -92,6 +100,13 @@ var routes = [{
 }, {
     path: '/my',
     component: _My2.default
+}, {
+    path: '/admin',
+    component: _Admin2.default
+}, {
+    path: '/detail/:id',
+    component: _Detail2.default,
+    name: 'picture-detail'
 }];
 
 var router = new _vueRouter2.default({

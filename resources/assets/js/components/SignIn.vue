@@ -81,10 +81,17 @@
                                 emulateJSON: true
                             }).then(response => {
                             if (response.status === 200) {
+                                console.log(this.signInForm.username);
                                 this.showMessage('登陆成功！');
-                              setTimeout(()=>{
-                                    this.$router.push('/');
-                                },1000);
+                                if(this.signInForm.username==='admin'){
+                                    setTimeout(()=>{
+                                        this.$router.push('/admin');
+                                    },1000);
+                                } else {
+                                    setTimeout(()=>{
+                                        this.$router.push('/');
+                                    },1000);
+                                }
                             }
                         }).catch(response => {
                             if (response.status === 401) {
@@ -98,9 +105,6 @@
                         return false
                     }
                 })
-            },
-            resetForm (formName) {
-                this.$refs[formName].resetFields()
             },
             jumpTo (url) {
                 this.$router.push(url)
